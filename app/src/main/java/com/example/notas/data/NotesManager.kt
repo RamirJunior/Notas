@@ -7,7 +7,7 @@ class NotesManager {
         Note(id = 0, text = "Nota 2"),
         Note(id = 0, text = "Nota 3"),
         Note(id = 0, text = "Nota 4"),
-        Note(id = 0, text = "Nota 5"),
+        Note(id = 0, text = "Nota 5")
     )
     fun getNotes() = data
 }
