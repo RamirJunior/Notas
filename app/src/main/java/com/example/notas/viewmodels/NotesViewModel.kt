@@ -7,6 +7,7 @@ import com.example.notas.data.Note
 import com.example.notas.data.NotesManager
 
 class NotesViewModel: ViewModel() {
+
     private val notesManager = NotesManager()
     private var mNotes: MutableLiveData<List<Note>>? = null
 
@@ -19,7 +20,7 @@ class NotesViewModel: ViewModel() {
     }
 
     fun loadNotes() {
-        var tmp = notesManager.getNotes()
+        val tmp = notesManager.getNotes()
         mNotes!!.postValue(tmp)
     }
 }

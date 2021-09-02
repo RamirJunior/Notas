@@ -1,11 +1,11 @@
 package com.example.notas.ui.activities
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setViewModel() {
         notesViewModel = ViewModelProvider(this).get(NotesViewModel::class.java)
-        notesViewModel.getNotes().observe(this, Observer { data ->
+        notesViewModel.getNotes().observe(this, { data ->
             data?.let {
                 if (it.isEmpty()) {
                     Toast.makeText(this, "Lista vazia", Toast.LENGTH_LONG).show()
@@ -58,8 +58,15 @@ class MainActivity : AppCompatActivity() {
     // click detection treatment
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_add) {
-            //TODO: calling AddNote screen
+            dialogAddNote()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun dialogAddNote() {
+        val layout = LayoutInflater.from(this)
+            .inflate(R.layout.dialog_ui, null, false)
+
+//        val dialog = AlertDialog.Builder()this.apply {  }
     }
 }
