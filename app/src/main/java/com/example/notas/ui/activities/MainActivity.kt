@@ -16,7 +16,7 @@ import com.example.notas.viewmodels.NotesViewModel
 class MainActivity : AppCompatActivity() {
 
     private lateinit var notesViewModel: NotesViewModel
-    private val adapterNotes: AdapterNote by lazy{
+    private val adapterNotes: AdapterNote by lazy {
         AdapterNote()
     }
 
@@ -67,6 +67,6 @@ class MainActivity : AppCompatActivity() {
         val layout = LayoutInflater.from(this)
             .inflate(R.layout.dialog_ui, null, false)
 
-//        val dialog = AlertDialog.Builder()this.apply {  }
+        // TODO val dialog = AlertDialog.Builder()this.apply {  }
     }
 }
