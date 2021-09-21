@@ -12,15 +12,13 @@ class NotesViewModel: ViewModel() {
     private var mNotes: MutableLiveData<List<Note>>? = null
 
     fun getNotes(): LiveData<List<Note>> {
+
         if (mNotes == null) {
             mNotes = MutableLiveData()
-            loadNotes()
+
+            val tmp = notesManager.getNotes()
+            mNotes!!.postValue(tmp)
         }
         return mNotes!!
-    }
-
-    fun loadNotes() {
-        val tmp = notesManager.getNotes()
-        mNotes!!.postValue(tmp)
     }
 }
