@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -68,6 +69,13 @@ class MainActivity : AppCompatActivity() {
         val layout = LayoutInflater.from(this)
             .inflate(R.layout.dialog_ui, null, false)
 
-        // TODO val dialog = AlertDialog.Builder()this.apply {  }
+        val dialog = AlertDialog.Builder(this)
+        dialog.setView(layout)
+        dialog.setNegativeButton("Cancelar",null)
+        dialog.setPositiveButton("Salvar"){ d, i ->
+            //TODO salvar nota
+        }
+
+        dialog.create().show()
     }
 }
