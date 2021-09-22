@@ -11,8 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notas.R
+import com.example.notas.data.Note
 import com.example.notas.ui.AdapterNote
 import com.example.notas.viewmodels.NotesViewModel
+import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity() {
 
@@ -69,11 +71,17 @@ class MainActivity : AppCompatActivity() {
         val layout = LayoutInflater.from(this)
             .inflate(R.layout.dialog_ui, null, false)
 
+        val inputNote = layout.findViewById<TextInputEditText>(R.id.input_note)
+
         val dialog = AlertDialog.Builder(this)
         dialog.setView(layout)
         dialog.setNegativeButton("Cancelar",null)
         dialog.setPositiveButton("Salvar"){ d, i ->
             //TODO salvar nota
+
+            val note = Note(0,inputNote.text.toString())
+
+            notesViewModel.save(note)
         }
 
         dialog.create().show()
